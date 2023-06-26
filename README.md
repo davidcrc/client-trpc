@@ -19,3 +19,5 @@ pnpm dev
 server: https://github.com/davidcrc/mern-trpc-crud
 
 - This is not a performance configuration for trpc
+
+- A better solution will be handle cache query and update o remove from cache

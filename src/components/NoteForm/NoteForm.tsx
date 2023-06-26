@@ -37,24 +37,29 @@ const NoteForm = () => {
   };
 
   return (
-    <div>
-      <form className="flex flex-col gap-4 w-fit" onSubmit={handleSubmit}>
+    <div className="bg-zinc-900 p-10 rounded-md">
+      <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="title"
-          className="text-black"
+          className="text-white bg-neutral-800 px-3 py-2 w-full block rounded-md"
           name="title"
+          value={note.title}
           onChange={handleChange}
         />
 
         <textarea
           name="description"
-          className="text-black"
+          className="text-white bg-neutral-800 px-3 py-2 w-full block rounded-md"
           placeholder="description"
+          value={note.description}
           onChange={handleChange}
         />
 
-        <button type="submit" className="bg-green-600 text-black">
+        <button
+          type="submit"
+          className="bg-orange-500 text-white px-3 py-2 rounded-md w-40"
+        >
           {isLoading ? "Saving" : "Save"}
         </button>
       </form>

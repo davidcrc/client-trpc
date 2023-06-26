@@ -16,6 +16,10 @@ const NodeList = () => {
     return <div> Error: {error.message}</div>
   }
 
+  if(!isLoading && !data.length){
+    return <div> There is no notes, please add some notes :D</div>
+  }
+
   return <>
   {
     data.map((note: any, index: number) => {
