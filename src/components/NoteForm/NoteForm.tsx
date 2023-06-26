@@ -18,6 +18,8 @@ const NoteForm = () => {
     addNoteMutation(note, {
       onSuccess: () => {
         setNote(DEFAULT_NOTE);
+
+        // TODO: is better update cache I think
         utils.notes.get.invalidate();
       },
       onError: (error) => {
