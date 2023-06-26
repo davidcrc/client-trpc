@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.17",
+    "@trpc/client": "^10.32.0",
+    "@trpc/react-query": "^10.32.0",
+    "@trpc/server": "^10.32.0",
     "@types/node": "20.3.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
