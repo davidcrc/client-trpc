@@ -3,18 +3,25 @@
 import React, { useState } from "react";
 import { trpc } from "../../utils/trpc";
 
-const NoteForm = () => {
-  const [note, setNote] = useState({ title: "", description: "" });
+const DEFAULT_NOTE = { title: "", description: "" };
 
-  const addNote = trpc.notes.create.useMutation();
+const NoteForm = () => {
+  const [note, setNote] = useState(DEFAULT_NOTE);
+
+  const { mutate: addNoteMutation, isLoading } =
+    trpc.notes.create.useMutation();
+  const utils = trpc.useContext();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("ee", note);
 
-    addNote.mutate(note, {
+    addNoteMutation(note, {
       onSuccess: () => {
-        console.log("success saved");
+        setNote(DEFAULT_NOTE);
+        utils.notes.get.invalidate();
+      },
+      onError: (error) => {
+        console.log("handle err", error);
       },
     });
   };
@@ -46,7 +53,7 @@ const NoteForm = () => {
         />
 
         <button type="submit" className="bg-green-600 text-black">
-          Save
+          {isLoading ? "Saving" : "Save"}
         </button>
       </form>
     </div>
